@@ -1,0 +1,36 @@
+body {
+  background-image: url('../images/skygrassbackground.jpg'); */
+  /*background-color: white;*/
+  color: white;
+}
+button {
+
+}
+h2 {
+  text-align: center;
+}
+h3 {
+  text-align: center;
+}
+.fighters {
+  float: left;
+}
+.fighters2 {
+  float:left;
+}
+.playerArea {
+  /*background-color: pink;*/
+  float: left;
+}
+.enemyArea {
+  /*background-color: yellow;*/
+  float: right;
+}
+.textAreas {
+  text-align: center;
+}
+#home {
+  /*background-color: green;*/
+  margin-left: 20%;
+  margin-right: 20%;
+}
