@@ -1,5 +1,6 @@
 body {
-  background-image: url('../images/skygrassbackground.jpg'); */
+  background-image: url('../images/skygrassbackground.jpg');
+  background-size: cover;
   /*background-color: white;*/
   color: white;
 }
@@ -10,6 +11,9 @@ h2 {
   text-align: center;
 }
 h3 {
+  text-align: center;
+}
+p {
   text-align: center;
 }
 .fighters {

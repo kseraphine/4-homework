@@ -2,38 +2,65 @@ var attack;
 var playerCharacter;
 var opponent;
 var fighters;
-var attackRound;
+var attackRound = 0;
 var playerHP; //depends on character chosen maybe should be characterHP for all?
-var playerAP = playerCAP * attackRound;
+var playerAP; //= playerCAP * attackRound;
 var playerCAP; //depends on the character
 var opponentHP; //depends on the character
 var opponentCAP; //depends on the character
-
 window.onload = function(){
+
   //How can I make this more automatic? like set whatever the users clicks as playerCharacter and then
   //$('#attack').click(attackFunction);//TODO: Create a function for attack
   //$('#pickCharacter').click(pickFunction); //TODO: Create a function for what happens; started below.
   //$('#pickOpponent').click(pickOpponent); //TODO: Create a function for what happens
-pickFunction();
-
 
   function pickFunction() {
-    $('header').html("<h2>Pick your character</h2>");
-    $(".fighters").click(function(){
-      playerCharacter = $(this).addClass("playerCharacter").removeClass("fighters").appendTo(".playerArea");
+    $('header').html('<h2>Pick your character</h2>');
+    $('.fighters').click(function(){
+      playerCharacter = $(this).addClass('playerCharacter').removeClass('fighters').appendTo('.playerArea');
+      playerAP = $(this).attr('attack');
+      playerBAP = $(this).attr('attack');
+      playerHP = $(this).attr('health');
+      $('#playerAP').html(playerAP);
+      $('#playerHP').html(playerHP);
+      //TODO: write playerstats to the divs
       console.log(playerCharacter);
-      $(".fighters").removeClass("fighters").addClass("fighters2");
+      $('.fighters').removeClass('fighters').addClass('fighters2');
       pickOpponent();
-      //$(".HPstat").appendTo("#playerHP");
+      //$('.HPstat').appendTo('#playerHP');
       function pickOpponent() {
-        $('header').html("<h2>Pick your opponent</h2>");
-        $(".fighters2").click(function(){
-          opponent = $(this).addClass("opponent").removeClass("fighters2 playerCharacter").appendTo(".enemyArea");
+        $('header').html('<h2>Pick your opponent</h2>');
+        $('.fighters2').click(function(){
+          opponent = $(this).addClass('opponent').removeClass('fighters2 playerCharacter').appendTo('.enemyArea');
+          opponentCAP = $(this).attr('attack');
+          opponentHP = $(this).attr('health');
+          $('#opponentCAP').html(opponentCAP);
+          $('#opponentHP').html(opponentHP);
+          //TODO: add oppCAP and HP and write to divs
           console.log(opponent);
         });
       }
     });
   };
+  pickFunction();
+
+  $('.btn').click(function(){
+    //TODO: Play attack sound :-)
+    attackRound++;
+    playerAP = playerBAP * attackRound;
+    attack = Math.floor(Math.random() * playerAP);
+    console.log('Round: ' + attackRound);
+    console.log('AP: ' + playerAP);
+    console.log('Attack' + attack);
+  });
+
+  function assignPoints() {
+    $('.playerCharacter')
+  }
+
+
+$
 
 
 
@@ -47,7 +74,7 @@ pickFunction();
   //When the game starts, the player will choose a character by clicking on the fighter's picture. The player will fight as that character for the rest of the game.
 
   //The player must then defeat all of the remaining fighters. Enemies should be moved to a different area of the screen.
-  //TODO: Create an if statement that says if playerCharacter is "_" then...and run a function that takes everything that's not player's choice and rearranges them.  I need to figure out how to pass player choice, maybe the same way we did for the coinflip game in activity 5.2.
+  //TODO: Create an if statement that says if playerCharacter is '_' then...and run a function that takes everything that's not player's choice and rearranges them.  I need to figure out how to pass player choice, maybe the same way we did for the coinflip game in activity 5.2.
 
   //The player chooses an opponent by clicking on an enemy's picture.
 
