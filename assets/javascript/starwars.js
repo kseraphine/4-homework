@@ -8,59 +8,56 @@ var playerAP; //= playerCAP * attackRound;
 var playerCAP; //depends on the character
 var opponentHP; //depends on the character
 var opponentCAP; //depends on the character
+var characterPicked = false;
+var enemyPicked = false;
 window.onload = function(){
 
   //How can I make this more automatic? like set whatever the users clicks as playerCharacter and then
   //$('#attack').click(attackFunction);//TODO: Create a function for attack
   //$('#pickCharacter').click(pickFunction); //TODO: Create a function for what happens; started below.
   //$('#pickOpponent').click(pickOpponent); //TODO: Create a function for what happens
+$('.fighters').click(function(){
+  //TODO: if (characterPicked == false)...
+  $('header').html('<h2>Pick your character</h2>');
+    console.log('i am clicked');
+    playerCharacter = $(this).addClass('playerCharacter').removeClass('fighters').appendTo('.playerArea');
+    playerAP = $(this).attr('attack');
+    playerBAP = $(this).attr('attack');
+    playerHP = $(this).attr('health');
+    $('#playerAP').html(playerAP);
+    $('#playerHP').html(playerHP);
+    //TODO: write playerstats to the divs
+    console.log(playerCharacter);
+    $('.fighters').removeClass('fighters').addClass('fighters2');
+    // characterPicked = true;
+    //$('.HPstat').appendTo('#playerHP');
 
-  function pickFunction() {
-    $('header').html('<h2>Pick your character</h2>');
-    $('.fighters').click(function(){
-      playerCharacter = $(this).addClass('playerCharacter').removeClass('fighters').appendTo('.playerArea');
-      playerAP = $(this).attr('attack');
-      playerBAP = $(this).attr('attack');
-      playerHP = $(this).attr('health');
-      $('#playerAP').html(playerAP);
-      $('#playerHP').html(playerHP);
-      //TODO: write playerstats to the divs
-      console.log(playerCharacter);
-      $('.fighters').removeClass('fighters').addClass('fighters2');
-      pickOpponent();
-      //$('.HPstat').appendTo('#playerHP');
-      function pickOpponent() {
-        $('header').html('<h2>Pick your opponent</h2>');
-        $('.fighters2').click(function(){
-          opponent = $(this).addClass('opponent').removeClass('fighters2 playerCharacter').appendTo('.enemyArea');
-          opponentCAP = $(this).attr('attack');
-          opponentHP = $(this).attr('health');
-          $('#opponentCAP').html(opponentCAP);
-          $('#opponentHP').html(opponentHP);
-          //TODO: add oppCAP and HP and write to divs
-          console.log(opponent);
-        });
-      }
-    });
-  };
-  pickFunction();
+    //TODO: else if (characterPicked == true && enemyPicked == false)...
+    $('header').html('<h2>Pick your opponent</h2>');
+    $('.fighters2').click(function(){
+      opponent = $(this).addClass('opponent').removeClass('fighters2 playerCharacter').appendTo('.enemyArea');
+      opponentCAP = $(this).attr('attack');
+      opponentHP = $(this).attr('health');
+      $('#opponentCAP').html(opponentCAP);
+      $('#opponentHP').html(opponentHP);
+      //TODO: add oppCAP and HP and write to divs
+      console.log(opponent);
+});
+
 
   $('.btn').click(function(){
     //TODO: Play attack sound :-)
+
     attackRound++;
     playerAP = playerBAP * attackRound;
     attack = Math.floor(Math.random() * playerAP);
     console.log('Round: ' + attackRound);
     console.log('AP: ' + playerAP);
     console.log('Attack' + attack);
+    playerHP = 
   });
 
-  function assignPoints() {
-    $('.playerCharacter')
-  }
 
-
-$
 
 
 
